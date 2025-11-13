@@ -1,0 +1,48 @@
+mkdir example_gz_ws/src
+ros2 pkg create --build-type ament_python gazebo_rviz_demo --dependencies rclpy gazebo_ros robot_state_publisher rviz2
+
+cd gazebo_rviz_demo/
+mkdir urdf
+
+tao urdf/simple_arm.urdf:
+
+-> Can tao mot the gioi world de dat robot vao
+
+dir gazebo_rviz_demo
+mkdir worlds
+
+Tạo file worlds/empty_world.world:
+Tạo một file cấu hình RViz để nó tự động load đúng mô hình
+
+mkdir rviz
+
+Tạo Launch File sẽ khởi chạy mọi thứ (Gazebo, RViz, và các node cần thiết)
+
+mkdir launch
+
+
+Cấu hình Build
+Cần bảo ROS 2 "nhìn thấy" các file urdf, launch, worlds, rviz mà chúng ta vừa tạo.
+
+Mở file package.xml dam bao dong nay ton tai:
+
+<depend>rclpy</depend>
+<depend>gazebo_ros</depend>
+<depend>robot_state_publisher</depend>
+<depend>rviz2</depend>
+
+Mở file setup.py: Đây là file quan trọng nhất để sao chép các file khi build
+
+from setuptools import setup
+import os
+from glob import glob
+
+package_name = 'gazebo_rviz_demo'
+
+Build
+
+colcon build --packages-select gazebo_rviz_demo
+
+source install/setup.bash
+
+ros2 launch gazebo_rviz_demo demo.launch.py
