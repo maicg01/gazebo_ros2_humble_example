@@ -22,7 +22,19 @@ Before you begin, ensure you have the following installed:
 
 This package uses resource files organized as follows:
 
-gazebo_rviz_demo/ ├── launch/ │ └── demo.launch.py # Main launch file, starts everything ├── urdf/ │ └── simple_arm.urdf # Robot description (geometry, joints, Gazebo plugin) ├── worlds/ │ └── empty_world.world # Gazebo world file (ground plane and sun) ├── rviz/ │ └── demo.rviz # RViz configuration (displays RobotModel and TF) ├── package.xml # Package manifest and dependencies └── setup.py # Setup script (crucial for copying resource files)
+```
+gazebo_rviz_demo/
+├── launch/
+│   └── demo.launch.py         # Launch file (starts Gazebo + RViz)
+├── urdf/
+│   └── simple_arm.urdf        # Robot description
+├── worlds/
+│   └── empty_world.world      # Gazebo environment
+├── rviz/
+│   └── demo.rviz              # RViz configuration
+├── package.xml                # Package manifest and dependencies
+└── setup.py                   # Setup script for resource installation
+```
 
 ## 🛠️ How to Build
 
